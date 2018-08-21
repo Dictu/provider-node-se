@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>eu.toop.node</groupId>
+	<artifactId>provider-node-se</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>provider-node-se</name>
+	<description>Demo project for Spring Boot</description>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.1.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>8</java.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-rest</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-integration</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web-services</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-rest-hal-browser</artifactId>
+		</dependency>
+		
+		<dependency>
+               <groupId>org.springframework.ws</groupId>
+               <artifactId>spring-ws-core</artifactId>
+        </dependency>
+        <dependency>
+		    <groupId>javax.xml.ws</groupId>
+		    <artifactId>jaxws-api</artifactId>
+		    <version>2.3.0</version>
+		</dependency>
+        
+		<dependency>
+		    <groupId>javax.xml.bind</groupId>
+		    <artifactId>jaxb-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>wsdl4j</groupId>
+			<artifactId>wsdl4j</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.restdocs</groupId>
+			<artifactId>spring-restdocs-mockmvc</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		
+        
+		<!-- HTTP client Fluent builder -->
+		<dependency>
+	        <groupId>org.apache.httpcomponents</groupId>
+	        <artifactId>httpclient</artifactId>
+		</dependency>
+		
+		<dependency>
+	        <groupId>nl.minezk.dictu</groupId>
+	        <artifactId>toopapi</artifactId>
+	        <version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+
+				</configuration>
+			</plugin>
+			<!-- tag::wsdl[] 
+            <plugin>
+                <groupId>org.jvnet.jaxb2.maven2</groupId>
+                <artifactId>maven-jaxb2-plugin</artifactId>
+                <version>0.12.3</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <schemaLanguage>AUTODETECT</schemaLanguage>
+                    <wsdl>true</wsdl>
+                    <episode>false</episode>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <generateDirectory>${project.build.directory}/generated-sources/wsimport</generateDirectory>
+                    <schemas>
+                        <schema>
+							<fileset>
+								<directory>${basedir}/src/main/resources/wsdl</directory>
+								<includes>
+									<include>*.xsd</include>
+									<include>Ssbtgu.wsdl</include>
+								</includes>
+								<excludes>
+									<exclude>*.xs</exclude>
+								</excludes>
+							</fileset>
+                        </schema>
+                    </schemas>					
+                </configuration>
+                <dependencies>
+	                <dependency>
+						<groupId>com.sun.xml.bind</groupId>
+						<artifactId>jaxb-osgi</artifactId>
+						<version>2.2.11</version>
+					</dependency>
+					<dependency>
+				        <groupId>javax.xml.bind</groupId>
+				        <artifactId>jaxb-api</artifactId>
+				        <version>2.3.0</version>
+				    </dependency>
+				    <dependency>
+				        <groupId>com.sun.xml.bind</groupId>
+				        <artifactId>jaxb-impl</artifactId>
+				        <version>2.3.0</version>
+				    </dependency>
+				    <dependency>
+				        <groupId>org.glassfish.jaxb</groupId>
+				        <artifactId>jaxb-runtime</artifactId>
+				        <version>2.3.0</version>
+				    </dependency>
+				    <dependency>
+				        <groupId>javax.activation</groupId>
+				        <artifactId>activation</artifactId>
+				        <version>1.1.1</version>
+				    </dependency>
+                </dependencies>
+            </plugin>
+             end::wsdl[] -->
+           <plugin>
+			  <groupId>org.codehaus.mojo</groupId>
+			  <artifactId>jaxws-maven-plugin</artifactId>
+			  <version>2.5</version>
+			  <executions>
+			    <execution>
+			      <id>import_activate</id>
+			      <goals>
+			        <goal>wsimport</goal>
+			      </goals>
+			      <configuration>
+			      	<executable>${java.home}/../bin/wsimport.exe</executable>
+			        <wsdlDirectory>src/main/resources/wsdl</wsdlDirectory>
+			        <wsdlFiles>
+			           <wsdlFile>Ssbtgu.wsdl</wsdlFile>
+			        </wsdlFiles>
+			        <args>
+			        	<arg>-encoding</arg>
+			        	<arg>UTF-8</arg>
+			        </args>
+			        <vmArgs>
+			           <vmArg>-Djavax.xml.accessExternalSchema=all -Djavax.xml.accessExternalDTD=all</vmArg>
+			        </vmArgs>
+			      </configuration>
+			   </execution>
+			 </executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>mvnrepository.com</id>
+			<name>mvnrepository.com</name>
+			<url>https://mvnrepository.com/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>https://repo.spring.io/snapshot</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>mvnrepository.com</id>
+			<name>mvnrepository.com</name>
+			<url>https://mvnrepository.com/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>https://repo.spring.io/snapshot</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+
+
+</project>

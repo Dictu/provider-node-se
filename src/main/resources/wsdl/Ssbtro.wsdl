@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns="http://schema.bolagsverket.se/ssbtro" xmlns:ro="http://schema.bolagsverket.se/ssbtro/roll" xmlns:sf="http://schema.bolagsverket.se/ssbtro/servicefel" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://schema.bolagsverket.se/ssbtro">
+	<wsdl:documentation>SSBTRO version 1.0.0 (ssbt-schema build version 1.3.0)</wsdl:documentation>
+	
+	<wsdl:types>
+		<xs:schema>
+			<xs:import namespace="http://schema.bolagsverket.se/ssbtro/roll" schemaLocation="schema/ssbtro/Roll.xsd"/>
+			<xs:import namespace="http://schema.bolagsverket.se/ssbtro/servicefel" schemaLocation="schema/ssbtro/Servicefel.xsd"/>
+		</xs:schema>
+	</wsdl:types>
+	
+	<wsdl:message name="RollBegaran">
+		<wsdl:part name="Message" element="ro:RollBegaran"/>
+	</wsdl:message>
+	<wsdl:message name="RollSvar">
+		<wsdl:part name="Message" element="ro:RollSvar"/>
+	</wsdl:message>
+	<wsdl:message name="ServicefelException">
+		<wsdl:part name="Message" element="sf:Servicefel"/>
+	</wsdl:message>
+	
+	<wsdl:portType name="SsbtroService">
+		<wsdl:operation name="GetForetagsroll">
+			<wsdl:input message="RollBegaran"/>
+			<wsdl:output message="RollSvar"/>
+			<wsdl:fault name="Fault" message="ServicefelException"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	
+	<wsdl:binding name="SsbtroServiceHttpBinding" type="SsbtroService">
+		<wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="GetForetagsroll">
+			<wsdlsoap:operation soapAction="urn:GetForetagsroll" style="document"/>
+			<wsdl:input>
+				<wsdlsoap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<wsdlsoap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<wsdlsoap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	
+	<wsdl:service name="SsbtroServicePorts">
+		<wsdl:port name="SsbtroService" binding="SsbtroServiceHttpBinding">
+ 			<wsdlsoap:address location="https://serviceadress"/>
+		</wsdl:port>
+	</wsdl:service>
+	
+</wsdl:definitions>

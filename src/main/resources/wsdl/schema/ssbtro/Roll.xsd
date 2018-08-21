@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://schema.bolagsverket.se/ssbtro/roll" xmlns:md="http://schema.bolagsverket.se/ssbt/metadata" xmlns:iumf="http://schema.bolagsverket.se/ssbt/foretag" xmlns:fel="http://schema.bolagsverket.se/ssbt/fel" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:roi="http://schema.bolagsverket.se/ssbt/rollintyg" targetNamespace="http://schema.bolagsverket.se/ssbtro/roll" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0">
+	<xs:annotation>
+		<xs:documentation>ssbt-schema build version 1.3.0</xs:documentation>
+	</xs:annotation>
+	<xs:import namespace="http://schema.bolagsverket.se/ssbt/metadata" schemaLocation="../ssbt/Metadata.xsd"/>
+	<xs:import namespace="http://schema.bolagsverket.se/ssbt/foretag" schemaLocation="../ssbt/Foretag.xsd"/>
+	<xs:import namespace="http://schema.bolagsverket.se/ssbt/fel" schemaLocation="../ssbt/Fel.xsd"/>
+	<xs:import namespace="http://schema.bolagsverket.se/ssbt/rollintyg" schemaLocation="../ssbt/RollIntyg.xsd"/>
+	<xs:complexType name="rollBegaran">
+		<xs:sequence>
+			<xs:element ref="RollBegaranMetadata"/>
+			<xs:element ref="RollBegaranDetaljer" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="SchemaVersion" type="md:schemaVersion" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="rollBegaranDetaljer">
+		<xs:sequence>
+			<xs:element ref="PersonId"/>
+			<xs:element ref="ForetagId"/>
+			<xs:element ref="Foretagsform"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="rollBegaranMetadata">
+		<xs:sequence>
+			<xs:element ref="md:MeddelandeId"/>
+			<xs:element ref="md:TransaktionId"/>
+			<xs:element ref="md:Tidstampel"/>
+			<xs:element ref="md:TTL" minOccurs="0"/>
+			<xs:element ref="md:Datakonsument"/>
+			<xs:element ref="md:Anvandare"/>
+			<xs:element ref="md:Formedlare" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="rollSvar">
+		<xs:sequence>
+			<xs:element ref="RollSvarMetadata"/>
+			<xs:element ref="RollSvarDetaljer" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="SchemaVersion" type="md:schemaVersion" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="rollSvarDetaljer">
+		<xs:sequence>
+			<xs:element ref="PersonId"/>
+			<xs:element ref="ForetagId"/>
+			<xs:element ref="ForetagRoll" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="rollSvarMetadata">
+		<xs:sequence>
+			<xs:element ref="md:MeddelandeId"/>
+			<xs:element ref="md:TransaktionId"/>
+			<xs:element ref="md:Tidstampel"/>
+			<xs:element ref="md:Datakonsument"/>
+			<xs:element ref="md:Dataproducent" minOccurs="0"/>
+			<xs:element ref="md:Anvandare"/>
+			<xs:element ref="md:Formedlare" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="foretagId">
+		<xs:sequence>
+			<xs:element ref="iumf:PersonIdentitetsbeteckning"/>
+			<xs:element ref="iumf:Namnskyddslopnummer" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="foretagRoll">
+		<xs:sequence>
+			<xs:element ref="ForetagRollMetadata" minOccurs="0"/>
+			<xs:choice>
+				<xs:element ref="roi:RollIntyg" minOccurs="0"/>
+				<xs:element ref="fel:Fel"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="foretagRollMetadata">
+		<xs:sequence>
+			<xs:element ref="md:Dataproducent"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="foretagsform">
+		<xs:sequence>
+			<xs:element ref="iumf:ForetagsformKod"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="personId">
+		<xs:sequence>
+			<xs:element ref="iumf:PersonIdentitetsbeteckning"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="RollBegaran" type="rollBegaran"/>
+	<xs:element name="RollBegaranDetaljer" type="rollBegaranDetaljer"/>
+	<xs:element name="RollBegaranMetadata" type="rollBegaranMetadata"/>
+	<xs:element name="RollSvar" type="rollSvar"/>
+	<xs:element name="RollSvarDetaljer" type="rollSvarDetaljer"/>
+	<xs:element name="RollSvarMetadata" type="rollSvarMetadata"/>
+	<xs:element name="ForetagRoll" type="foretagRoll"/>
+	<xs:element name="ForetagRollMetadata" type="foretagRollMetadata"/>
+	<xs:element name="ForetagId" type="foretagId"/>
+	<xs:element name="Foretagsform" type="foretagsform"/>
+	<xs:element name="PersonId" type="personId"/>
+</xs:schema>

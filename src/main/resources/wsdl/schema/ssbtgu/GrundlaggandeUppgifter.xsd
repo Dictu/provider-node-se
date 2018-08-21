@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://schema.bolagsverket.se/ssbtgu/v2/grundlaggandeuppgifter" xmlns:md="http://schema.bolagsverket.se/ssbt/metadata" xmlns:fel="http://schema.bolagsverket.se/ssbt/fel" xmlns:iumf="http://schema.bolagsverket.se/ssbt/foretag" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:roi="http://schema.bolagsverket.se/ssbt/rollintyg" targetNamespace="http://schema.bolagsverket.se/ssbtgu/v2/grundlaggandeuppgifter" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.2.0">
+	<xs:annotation>
+		<xs:documentation>ssbt-schema build version 1.3.0</xs:documentation>
+	</xs:annotation>
+	<xs:import namespace="http://schema.bolagsverket.se/ssbt/metadata" schemaLocation="../ssbt/Metadata.xsd"/>
+	<xs:import namespace="http://schema.bolagsverket.se/ssbt/fel" schemaLocation="../ssbt/Fel.xsd"/>
+	<xs:import namespace="http://schema.bolagsverket.se/ssbt/foretag" schemaLocation="../ssbt/Foretag.xsd"/>
+	<xs:import namespace="http://schema.bolagsverket.se/ssbt/rollintyg" schemaLocation="../ssbt/RollIntyg.xsd"/>
+	<xs:complexType name="belagenhetsadressArbetsstalle">
+		<xs:sequence>
+			<xs:element ref="iumf:CFARNummer"/>
+			<xs:element ref="iumf:Belagenhetsadress"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="benamningArbetsstalle">
+		<xs:sequence>
+			<xs:element ref="iumf:CFARNummer"/>
+			<xs:element ref="iumf:ArbetsstalleBenamning"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="foretagId">
+		<xs:sequence>
+			<xs:element ref="iumf:PersonIdentitetsbeteckning"/>
+			<xs:element ref="iumf:Namnskyddslopnummer" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="grundlaggandeUppgift">
+		<xs:sequence>
+			<xs:element ref="GrundlaggandeUppgiftMetadata" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="grundlaggandeUppgiftMetadata">
+		<xs:sequence>
+			<xs:element ref="md:Dataproducent"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="grundlaggandeUppgifterBegaran">
+		<xs:sequence>
+			<xs:element ref="GrundlaggandeUppgifterBegaranMetadata"/>
+			<xs:element ref="GrundlaggandeUppgifterBegaranDetaljer" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="SchemaVersion" type="md:schemaVersion" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="grundlaggandeUppgifterBegaranDetaljer">
+		<xs:sequence>
+			<xs:element ref="ForetagId"/>
+			<xs:element ref="GrundlaggandeUppgiftId" maxOccurs="unbounded"/>
+			<xs:element ref="roi:RollIntyg" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="grundlaggandeUppgifterBegaranMetadata">
+		<xs:sequence>
+			<xs:element ref="md:MeddelandeId"/>
+			<xs:element ref="md:TransaktionId"/>
+			<xs:element ref="md:Tidstampel"/>
+			<xs:element ref="md:TTL" minOccurs="0"/>
+			<xs:element ref="md:Datakonsument"/>
+			<xs:element ref="md:Anvandare"/>
+			<xs:element ref="md:Formedlare" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="grundlaggandeUppgifterSvar">
+		<xs:sequence>
+			<xs:element ref="GrundlaggandeUppgifterSvarMetadata"/>
+			<xs:element ref="GrundlaggandeUppgifterSvarDetaljer" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="SchemaVersion" type="md:schemaVersion" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="grundlaggandeUppgifterSvarDetaljer">
+		<xs:sequence>
+			<xs:element ref="ForetagId"/>
+			<xs:element ref="UD0001" minOccurs="0"/>
+			<xs:element ref="UD0003" minOccurs="0"/>
+			<xs:element ref="UD0004" minOccurs="0"/>
+			<xs:element ref="UD0006" minOccurs="0"/>
+			<xs:element ref="UD0009" minOccurs="0"/>
+			<xs:element ref="UD0010" minOccurs="0"/>
+			<xs:element ref="UD0011" minOccurs="0"/>
+			<xs:element ref="UD0012" minOccurs="0"/>
+			<xs:element ref="UD0014" minOccurs="0"/>
+			<xs:element ref="UD0020" minOccurs="0"/>
+			<xs:element ref="UD0023" minOccurs="0"/>
+			<xs:element ref="UD0024" minOccurs="0"/>
+			<xs:element ref="UD0025" minOccurs="0"/>
+			<xs:element ref="UD0026" minOccurs="0"/>
+			<xs:element ref="UD0027" minOccurs="0"/>
+			<xs:element ref="UD0028" minOccurs="0"/>
+			<xs:element ref="UD0029" minOccurs="0"/>
+			<xs:element ref="UD0031" minOccurs="0"/>
+			<xs:element ref="UD0033" minOccurs="0"/>
+			<xs:element ref="UD0034" minOccurs="0"/>
+			<xs:element ref="UD0039" minOccurs="0"/>
+			<xs:element ref="UD0040" minOccurs="0"/>
+			<xs:element ref="UD0042" minOccurs="0"/>
+			<xs:element ref="UD0043" minOccurs="0"/>
+			<xs:element ref="UD0044" minOccurs="0"/>
+			<xs:element ref="UD0045" minOccurs="0"/>
+			<xs:element ref="UD0046" minOccurs="0"/>
+			<xs:element ref="UD0047" minOccurs="0"/>
+			<xs:element ref="UD0048" minOccurs="0"/>
+			<xs:element ref="UD0049" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="grundlaggandeUppgifterSvarMetadata">
+		<xs:sequence>
+			<xs:element ref="md:MeddelandeId"/>
+			<xs:element ref="md:TransaktionId"/>
+			<xs:element ref="md:Tidstampel"/>
+			<xs:element ref="md:Datakonsument"/>
+			<xs:element ref="md:Dataproducent" minOccurs="0"/>
+			<xs:element ref="md:Anvandare"/>
+			<xs:element ref="md:Formedlare" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="markeringHuvudarbetsstalleArbetsstalle">
+		<xs:sequence>
+			<xs:element ref="iumf:CFARNummer"/>
+			<xs:element ref="Huvudarbetsstalle"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="postadressArbetsstalle">
+		<xs:sequence>
+			<xs:element ref="iumf:CFARNummer"/>
+			<xs:element ref="iumf:Postadress"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="sniKoderArbetsstalle">
+		<xs:sequence>
+			<xs:element ref="iumf:CFARNummer"/>
+			<xs:element ref="iumf:SNI" maxOccurs="3"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="telefonnummerArbetsstalle">
+		<xs:sequence>
+			<xs:element ref="iumf:CFARNummer"/>
+			<xs:element ref="iumf:Telefonnummer"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ud0001">
+		<xs:annotation>
+			<xs:documentation>Registrerat företagsnamn.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="grundlaggandeUppgift">
+				<xs:choice>
+					<xs:element ref="iumf:ForetagNamn" minOccurs="0"/>
+					<xs:element ref="fel:Fel"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ud0003">
+		<xs:annotation>
+			<xs:documentation>Juridisk person postadress.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="grundlaggandeUppgift">
+				<xs:choice>
+					<xs:element ref="iumf:Postadress" minOccurs="0"/>
+					<xs:element ref="fel:Fel"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ud0004">
+		<xs:annotation>
+			<xs:documentation>E-postadress till företaget.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="grundlaggandeUppgift">
+				<xs:choice>
+					<xs:element ref="iumf:EPostAdress" minOccurs="0"/>
+					<xs:element ref="fel:Fel"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ud0006">
+		<xs:annotation>
+			<xs:documentation>Telefonnummer till företaget.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="grundlaggandeUppgift">
+				<xs:choice>
+					<xs:element ref="iumf:Telefonnummer" minOccurs="0"/>
+					<xs:element ref="fel:Fel"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ud0009">
+		<xs:annotation>
+			<xs:documentation>Postadress till företagets arbetsställen.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="grundlaggandeUppgift">
+				<xs:choice>
+					<xs:element ref="PostadressArbetsstalle" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="fel:Fel"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ud0010">
+		<xs:annotation>
+			<xs:documentation>Belägenhetsadress till företagets arbetsställen.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="grundlaggandeUppgift">
+				<xs:choice>
+					<xs:element ref="BelagenhetsadressArbetsstalle" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="fel:Fel"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ud0011">
+		<xs:annotation>
+			<xs:documentation>Kommunkod säte.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="grundlaggandeUppgift">
+				<xs:choice>
+					<xs:element ref="iumf:Kommun" minOccurs="0"/>
+					<xs:element ref="fel:Fel"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ud0012">
+		<xs:annotation>
+			<xs:documentation>Länskod säte.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="grundlaggandeUppgift">
+				<xs:choice>
+					<xs:element ref="iumf:Lan" minOccurs="0"/>
+					<xs:element ref="fel:Fel"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ud0014">
+		<xs:annotation>
+			<xs:documentation>Räkenskapsår.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="grundlaggandeUppgift">
+				<xs:choice>
+					<xs:element ref="iumf:Rakenskapsar" minOccurs="0"/>
+					<xs:element ref="fel:Fel"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ud0020">
+		<xs:annotation>
+			<xs:documentation>Enskild näringsidkares fullständiga namn.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="grundlaggandeUppgift">
+				<xs:choice>
+					<xs:element ref="iumf:FysiskPersonNamn" minOccurs="0"/>
+					<xs:element ref="fel:Fel"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ud0023">
+		<xs:annotation>
+			<xs:documentation>Enskild näringsidkares folkbokföringsadress.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="grundlaggandeUppgift">
+				<xs:choice>
+					<xs:element ref="iumf:Postadress" minOccurs="0"/>
+					<xs:element ref="fel:Fel"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ud0024">
+		<xs:annotation>
+			<xs:documentation>SNI-koder företag.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="grundlaggandeUppgift">
+				<xs:choice>
+					<xs:element ref="iumf:SNI" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="fel:Fel"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ud0025">
+		<xs:annotation>
+			<xs:documentation>Företagsform.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="grundlaggandeUppgift">
+				<xs:choice>
+					<xs:element ref="iumf:Foretagsform" minOccurs="0"/>
+					<xs:element ref="fel:Fel"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ud0026">
+		<xs:annotation>
+			<xs:documentation>Datum för företagets registrering.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="grundlaggandeUppgift">
+				<xs:choice>
+					<xs:element ref="iumf:ForetagRegistreratDatum" minOccurs="0"/>
+					<xs:element ref="fel:Fel"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ud0027">
+		<xs:annotation>
+			<xs:documentation>Företagets status.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="grundlaggandeUppgift">
+				<xs:choice>
+					<xs:element ref="iumf:Avvecklingsforfarande" minOccurs="0"/>
+					<xs:element ref="fel:Fel"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ud0028">
+		<xs:annotation>
+			<xs:documentation>Näringslivsregistrering.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="grundlaggandeUppgift">
+				<xs:choice>
+					<xs:element ref="iumf:ForetagAvregistreratDatum" minOccurs="0"/>
+					<xs:element ref="fel:Fel"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ud0029">
+		<xs:annotation>
+			<xs:documentation>F-skatt skatteform.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="grundlaggandeUppgift">
+				<xs:choice>
+					<xs:element ref="iumf:Skatteform" minOccurs="0"/>
+					<xs:element ref="fel:Fel"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ud0031">
+		<xs:annotation>
+			<xs:documentation>Momsregistrering.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="grundlaggandeUppgift">
+				<xs:choice>
+					<xs:element ref="iumf:Momsregistrerad" minOccurs="0"/>
+					<xs:element ref="fel:Fel"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ud0033">
+		<xs:annotation>
+			<xs:documentation>Arbetsgivarregistrering.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="grundlaggandeUppgift">
+				<xs:choice>
+					<xs:element ref="iumf:Arbetsgivarregistrerad" minOccurs="0"/>
+					<xs:element ref="fel:Fel"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ud0034">
+		<xs:annotation>
+			<xs:documentation>CFAR-nummer.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="grundlaggandeUppgift">
+				<xs:choice>
+					<xs:element ref="iumf:CFARNummer" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="fel:Fel"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ud0039">
+		<xs:annotation>
+			<xs:documentation>SNI-koder för företagets arbetsställen.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="grundlaggandeUppgift">
+				<xs:choice>
+					<xs:element ref="SNIKoderArbetsstalle" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="fel:Fel"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ud0040">
+		<xs:annotation>
+			<xs:documentation>Belägenhetsadress till företaget.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="grundlaggandeUppgift">
+				<xs:choice>
+					<xs:element ref="iumf:Belagenhetsadress" minOccurs="0"/>
+					<xs:element ref="fel:Fel"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ud0042">
+		<xs:annotation>
+			<xs:documentation>Antal arbetsställen.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="grundlaggandeUppgift">
+				<xs:choice>
+					<xs:element ref="AntalArbetsstallen" minOccurs="0"/>
+					<xs:element ref="fel:Fel"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ud0043">
+		<xs:annotation>
+			<xs:documentation>Benämning på företagets arbetsställen.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="grundlaggandeUppgift">
+				<xs:choice>
+					<xs:element ref="BenamningArbetsstalle" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="fel:Fel"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ud0044">
+		<xs:annotation>
+			<xs:documentation>Markering för huvudarbetsställe.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="grundlaggandeUppgift">
+				<xs:choice>
+					<xs:element ref="MarkeringHuvudarbetsstalleArbetsstalle" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="fel:Fel"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ud0045">
+		<xs:annotation>
+			<xs:documentation>Firmateckning.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="grundlaggandeUppgift">
+				<xs:choice>
+					<xs:element ref="iumf:FirmateckningBeskrivning" minOccurs="0"/>
+					<xs:element ref="fel:Fel"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ud0046">
+		<xs:annotation>
+			<xs:documentation>Verksamhetsbeskrivning för företaget.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="grundlaggandeUppgift">
+				<xs:choice>
+					<xs:element ref="iumf:Verksamhetsbeskrivning" minOccurs="0"/>
+					<xs:element ref="fel:Fel"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ud0047">
+		<xs:annotation>
+			<xs:documentation>Samlade funktionärer.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="grundlaggandeUppgift">
+				<xs:choice>
+					<xs:element ref="SamladeFunktionarerBeskrivning" minOccurs="0"/>
+					<xs:element ref="fel:Fel"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ud0048">
+		<xs:annotation>
+			<xs:documentation>Aktiekapital/aktier.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="grundlaggandeUppgift">
+				<xs:choice>
+					<xs:element ref="iumf:Aktier" minOccurs="0"/>
+					<xs:element ref="fel:Fel"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ud0049">
+		<xs:annotation>
+			<xs:documentation>Telefonnummer till företagets arbetsställen.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="grundlaggandeUppgift">
+				<xs:choice>
+					<xs:element ref="TelefonnummerArbetsstalle" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="fel:Fel"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:simpleType name="antal">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="grundlaggandeUppgiftId">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UD0001"/>
+			<xs:enumeration value="UD0003"/>
+			<xs:enumeration value="UD0004"/>
+			<xs:enumeration value="UD0006"/>
+			<xs:enumeration value="UD0009"/>
+			<xs:enumeration value="UD0010"/>
+			<xs:enumeration value="UD0011"/>
+			<xs:enumeration value="UD0012"/>
+			<xs:enumeration value="UD0014"/>
+			<xs:enumeration value="UD0020"/>
+			<xs:enumeration value="UD0023"/>
+			<xs:enumeration value="UD0024"/>
+			<xs:enumeration value="UD0025"/>
+			<xs:enumeration value="UD0026"/>
+			<xs:enumeration value="UD0027"/>
+			<xs:enumeration value="UD0028"/>
+			<xs:enumeration value="UD0029"/>
+			<xs:enumeration value="UD0031"/>
+			<xs:enumeration value="UD0033"/>
+			<xs:enumeration value="UD0034"/>
+			<xs:enumeration value="UD0039"/>
+			<xs:enumeration value="UD0040"/>
+			<xs:enumeration value="UD0042"/>
+			<xs:enumeration value="UD0043"/>
+			<xs:enumeration value="UD0044"/>
+			<xs:enumeration value="UD0045"/>
+			<xs:enumeration value="UD0046"/>
+			<xs:enumeration value="UD0047"/>
+			<xs:enumeration value="UD0048"/>
+			<xs:enumeration value="UD0049"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="AntalArbetsstallen" type="antal"/>
+	<xs:element name="BelagenhetsadressArbetsstalle" type="belagenhetsadressArbetsstalle"/>
+	<xs:element name="BenamningArbetsstalle" type="benamningArbetsstalle"/>
+	<xs:element name="ForetagId" type="foretagId"/>
+	<xs:element name="GrundlaggandeUppgifterBegaran" type="grundlaggandeUppgifterBegaran"/>
+	<xs:element name="GrundlaggandeUppgifterBegaranDetaljer" type="grundlaggandeUppgifterBegaranDetaljer"/>
+	<xs:element name="GrundlaggandeUppgifterBegaranMetadata" type="grundlaggandeUppgifterBegaranMetadata"/>
+	<xs:element name="GrundlaggandeUppgifterSvar" type="grundlaggandeUppgifterSvar"/>
+	<xs:element name="GrundlaggandeUppgifterSvarDetaljer" type="grundlaggandeUppgifterSvarDetaljer"/>
+	<xs:element name="GrundlaggandeUppgifterSvarMetadata" type="grundlaggandeUppgifterSvarMetadata"/>
+	<xs:element name="GrundlaggandeUppgiftMetadata" type="grundlaggandeUppgiftMetadata"/>
+	<xs:element name="GrundlaggandeUppgiftId" type="grundlaggandeUppgiftId"/>
+	<xs:element name="Huvudarbetsstalle" type="iumf:jaNej"/>
+	<xs:element name="MarkeringHuvudarbetsstalleArbetsstalle" type="markeringHuvudarbetsstalleArbetsstalle"/>
+	<xs:element name="PostadressArbetsstalle" type="postadressArbetsstalle"/>
+	<xs:element name="SamladeFunktionarerBeskrivning" type="xs:string"/>
+	<xs:element name="SNIKoderArbetsstalle" type="sniKoderArbetsstalle"/>
+	<xs:element name="TelefonnummerArbetsstalle" type="telefonnummerArbetsstalle"/>
+	<xs:element name="UD0001" type="ud0001"/>
+	<xs:element name="UD0003" type="ud0003"/>
+	<xs:element name="UD0004" type="ud0004"/>
+	<xs:element name="UD0006" type="ud0006"/>
+	<xs:element name="UD0009" type="ud0009"/>
+	<xs:element name="UD0010" type="ud0010"/>
+	<xs:element name="UD0011" type="ud0011"/>
+	<xs:element name="UD0012" type="ud0012"/>
+	<xs:element name="UD0014" type="ud0014"/>
+	<xs:element name="UD0020" type="ud0020"/>
+	<xs:element name="UD0023" type="ud0023"/>
+	<xs:element name="UD0024" type="ud0024"/>
+	<xs:element name="UD0025" type="ud0025"/>
+	<xs:element name="UD0026" type="ud0026"/>
+	<xs:element name="UD0027" type="ud0027"/>
+	<xs:element name="UD0028" type="ud0028"/>
+	<xs:element name="UD0029" type="ud0029"/>
+	<xs:element name="UD0031" type="ud0031"/>
+	<xs:element name="UD0033" type="ud0033"/>
+	<xs:element name="UD0034" type="ud0034"/>
+	<xs:element name="UD0039" type="ud0039"/>
+	<xs:element name="UD0040" type="ud0040"/>
+	<xs:element name="UD0042" type="ud0042"/>
+	<xs:element name="UD0043" type="ud0043"/>
+	<xs:element name="UD0044" type="ud0044"/>
+	<xs:element name="UD0045" type="ud0045"/>
+	<xs:element name="UD0046" type="ud0046"/>
+	<xs:element name="UD0047" type="ud0047"/>
+	<xs:element name="UD0048" type="ud0048"/>
+	<xs:element name="UD0049" type="ud0049"/>
+</xs:schema>
